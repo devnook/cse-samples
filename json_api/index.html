@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>JSON/Atom Custom Search API Example</title>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      function hndlr(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+        document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
+      }
+    }
+    </script>
+    
+    <script type="text/javascript">
+      var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDOtKtaEkS2HLzn38knX6FDwtbP61G84ig&cx=017643444788069204610:t5phifdbs2g&q=getElement';
+      //var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDOtKtaEkS2HLzn38knX6FDwtbP61G84ig&cx=017643444788069204610:cesx-e08m4s&q=cat&searchType=image';
+      $.get(url, function(data) {
+        console.log(data);
+        console.log(data.items.kind);
+        for (var i = 0, item; item = data.items[i]; i++) {
+          document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
+        }
+      })
+      
+
+
+    </script>
+    "https://www.googleapis.com/customsearch/v1?
+q={searchTerms}&
+num={count?}&
+start={startIndex?}&
+lr={language?}&
+safe={safe?}&
+cx={cx?}&
+cref={cref?}&
+sort={sort?}&
+filter={filter?}&
+gl={gl?}&
+cr={cr?}&
+googlehost={googleHost?}&
+c2coff={disableCnTwTranslation?}&
+hq={hq?}&
+hl={hl?}&
+siteSearch={siteSearch?}&
+siteSearchFilter={siteSearchFilter?}&
+exactTerms={exactTerms?}&
+excludeTerms={excludeTerms?}&
+linkSite={linkSite?}&
+orTerms={orTerms?}&
+relatedSite={relatedSite?}&
+dateRestrict={dateRestrict?}&
+lowRange={lowRange?}&
+highRange={highRange?}&
+searchType={searchType}&
+fileType={fileType?}&
+rights={rights?}&
+imgSize={imgSize?}&
+imgType={imgType?}&
+imgColorType={imgColorType?}&
+imgDominantColor={imgDominantColor?}&
+alt=json"
+  </body>
+</html>
